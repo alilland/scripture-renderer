@@ -4,7 +4,7 @@ const Story = {
   title: 'Bible/TextObject',
   component: TextObject,
   parameters: {
-    layout: 'centered',
+    layout: 'left-right',
   },
   tags: ['autodocs'],
   argTypes: {},
