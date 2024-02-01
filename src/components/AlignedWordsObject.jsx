@@ -1,15 +1,13 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import Popover from "@mui/material/Popover";
 
 // TRICKY - importing from direct path gets around exported css styles which crashes nextjs
-import lookupStrongsNumbers from "../lib/lexiconHelpers";
+import { lookupStrongsNumbers } from "../lib/lexiconHelpers";
 import WordLexiconDetails from '../components/WordLexiconDetails';
 import WordObject from "./WordObject";
 import OriginalWordObject from "./OriginalWordObject";
-
-import { SelectionsContext } from "../selections/Selections.context";
+import SelectionsContextProvider from "./SelectionsContextProvider";
 
 const intervalBeforePopup = 500; // delay 1/2 sec. before showing popup
 
@@ -21,7 +19,7 @@ function AlignedWordsObject({
   getLexiconData,
   translate,
 }) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [popupPosition, setPopupPosition] = useState(null);
   const [readyToShow, setReadyToShow] = useState(false);
 
@@ -47,7 +45,7 @@ function AlignedWordsObject({
   };
 
   let selected;
-  const _selectionsContext = useContext(SelectionsContext);
+  const _selectionsContext = useContext(SelectionsContextProvider);
 
   if (_selectionsContext) {
     const {
@@ -62,7 +60,9 @@ function AlignedWordsObject({
       data-test="aligned-word-object"
       data-testselected={selected}
       key={index}
-      className={selected ? classes.selected : undefined}
+      sx={{
+        backgroundColor: selected ? "yellow" : undefined,
+      }}
     >
       <WordObject
         verseObject={verseObject}
@@ -122,7 +122,7 @@ function AlignedWordsObject({
           aria-haspopup="true"
           onMouseEnter={handleOpen}
           onMouseLeave={handleClose}
-          className={openPopup ? classes.open : classes.closed}
+          sx={openPopup ? { backgroundColor: "lightgoldenrodyellow" } : {}}
         >
           {words}
         </span>
@@ -131,8 +131,9 @@ function AlignedWordsObject({
           open={openPopup}
           anchorEl={popupPosition}
           onClose={handleClose}
-          className={classes.popover}
-          classes={{ paper: classes.paper }}
+          sx={{
+            padding: (theme) => theme.spacing(1),
+          }}
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "left",
@@ -162,14 +163,6 @@ AlignedWordsObject.propTypes = {
   /** optional function for localization */
   translate: PropTypes.func,
 };
-
-const useStyles = makeStyles((theme) => ({
-  open: { backgroundColor: "lightgoldenrodyellow" },
-  closed: {},
-  popover: { pointerEvents: "none" },
-  paper: { padding: theme.spacing(1) },
-  selected: { backgroundColor: "yellow" },
-}));
 
 // fallback translate function
 function translate_(key) {

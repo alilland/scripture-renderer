@@ -14,11 +14,17 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "deep-equal": "^2.2.3",
+    "deep-freeze-es6": "^3.0.2",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-scripts": "5.0.1",
+    "string-punctuation-tokenizer": "^2.2.0",
+    "use-deep-compare-effect": "^1.8.1",
+    "usfm-js": "^3.4.2",
     "web-vitals": "^2.1.4",
-    "word-aligner": "^1.0.2"
+    "word-aligner": "^1.0.2",
+    "xregexp": "^5.1.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.10",
