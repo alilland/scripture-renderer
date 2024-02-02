@@ -12,11 +12,9 @@ export const BookHeaders = ({ headers, showUnsupported, direction }) => {
   return (
     <div
       dir={direction || "auto"}
-      sx={{}}
     >
       <Typography
         variant="h2"
-        sx={{}}
       >
         {bookName}
       </Typography>

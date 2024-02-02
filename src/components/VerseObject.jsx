@@ -21,7 +21,9 @@ function VerseObject(props) {
       component = <div />;
       break;
     case "quote":
-      component = <TextObject verseObject={verseObject} />;
+      component = (
+        <TextObject verseObject={verseObject} paragraphs={paragraphs} />
+      );
       break;
     case 'section':
       component = <SectionObject verseObject={verseObject} />;

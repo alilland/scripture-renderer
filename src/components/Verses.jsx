@@ -69,7 +69,7 @@ export const Verses = ({
   }, [verses, paragraphs, showUnsupported, disableWordPopover]);
 
   return (
-    <div sx={{}}>
+    <div>
       {_front}
       {_verses}
       {_back}

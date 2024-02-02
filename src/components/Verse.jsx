@@ -97,9 +97,6 @@ export const Verse = (props) => {
       style={style}
       dir={_dir}
       onClick={() => handleClick(reference)}
-      sx={{
-
-      }}
     >
       {verse}
     </div>
