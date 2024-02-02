@@ -11,7 +11,7 @@ const verses = chapters[chapterKey];
 
 function App () {
   return (
-    <div>
+    <div style={{ maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
       <Verses
         verses={verses}
         paragraphs
