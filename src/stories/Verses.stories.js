@@ -1,0 +1,28 @@
+import Verses from '../components/Verses';
+import usfmJS from 'usfm-js'
+import usfm from '../mocks/en_psa.usfm';
+
+const usfmJSON = usfmJS.toJSON(usfm);
+const { chapters } = usfmJSON;
+const chapterKey = '1';
+const verses = chapters[chapterKey];
+
+const Story = {
+  title: 'Bible/Verses',
+  component: Verses,
+  parameters: {
+    layout: 'left-right',
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+};
+
+export const Component = {
+  args: {
+    verses: {verses},
+    paragraphs: true,
+    showUnsupported: true
+  }
+};
+
+export default Story

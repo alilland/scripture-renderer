@@ -11,14 +11,7 @@ import SelectionsContextProvider from "./SelectionsContextProvider";
 
 const intervalBeforePopup = 500; // delay 1/2 sec. before showing popup
 
-function AlignedWordsObject({
-  children,
-  verseKey,
-  originalWords,
-  disableWordPopover,
-  getLexiconData,
-  translate,
-}) {
+function AlignedWordsObject({ children, verseKey, originalWords, disableWordPopover, getLexiconData, translate }) {
   // const classes = useStyles();
   const [popupPosition, setPopupPosition] = useState(null);
   const [readyToShow, setReadyToShow] = useState(false);
@@ -48,10 +41,10 @@ function AlignedWordsObject({
   const _selectionsContext = useContext(SelectionsContextProvider);
 
   if (_selectionsContext) {
-    const {
-      state: selections,
-      actions: { areSelected, addSelections, removeSelections },
-    } = _selectionsContext;
+    console.log({
+      _selectionsContext
+    });
+    const { actions: { areSelected } } = _selectionsContext;
     selected = areSelected(originalWords, verseKey);
   }
 
